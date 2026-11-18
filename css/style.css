@@ -6,7 +6,7 @@
 
 :root {
   --navy:   #001c54;   /* brand colour: header, footer, buttons */
-  --accent: #c0504f;   /* red band under the photo tiles (from the mockup) */
+  --accent: #001c54;   /* intro band + fact markers; set to a second brand colour if you have one */
   --text:   #1d2433;
   --muted:  #5b6475;
   --bg:     #ffffff;
@@ -166,7 +166,7 @@ h3 { font-size: 1.25rem; margin-top: 1.6em; }
 }
 
 
-/* ---------- Home page: intro band (red block from the mockup) ---------- */
+/* ---------- Home page: intro band under the tiles ---------- */
 
 .intro {
   background: var(--accent);
