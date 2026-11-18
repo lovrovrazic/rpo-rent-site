@@ -1,0 +1,329 @@
+/* =========================================================
+   RPO Aktiva Vit – rental site
+   One stylesheet for every page and every language.
+   Change colours and fonts in the variables just below.
+   ========================================================= */
+
+:root {
+  --navy:   #001c54;   /* brand colour: header, footer, buttons */
+  --accent: #c0504f;   /* red band under the photo tiles (from the mockup) */
+  --text:   #1d2433;
+  --muted:  #5b6475;
+  --bg:     #ffffff;
+  --bg-alt: #f3f4f7;   /* light grey sections */
+  --line:   #d5d9e0;
+
+  --font-heading: "Tenor Sans", Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --max-width: 1100px;
+}
+
+/* Self-hosted font. Put tenor-sans.woff2 into html/fonts/.
+   Until the file is there, the browser falls back to Georgia. */
+@font-face {
+  font-family: "Tenor Sans";
+  src: url("../fonts/tenor-sans.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+/* ---------- Basics ---------- */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+
+[hidden] { display: none !important; }
+
+a { color: var(--navy); }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+h3 { font-size: 1.25rem; margin-top: 1.6em; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section     { padding: 64px 0; }
+.section-alt { background: var(--bg-alt); }
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--navy);
+  color: #fff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover    { opacity: 0.9; }
+.btn:disabled { opacity: 0.5; cursor: wait; }
+
+
+/* ---------- Header: logo + language switcher ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--navy);
+}
+
+/* On the home page the header floats over the photo tiles */
+.site-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), transparent);
+}
+
+.logo img { height: 64px; width: auto; }
+.site-header-overlay .logo img { height: 96px; }
+
+.lang a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 6px 8px;
+  opacity: 0.75;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.lang a:hover,
+.lang a[aria-current="page"] { opacity: 1; border-bottom: 1px solid #fff; }
+
+
+/* ---------- Home page: photo tiles ----------
+   Every <a class="tile"> gets an equal share of the width (flex: 1),
+   so 1, 2, 3 or 4 tiles always fill the whole row.            */
+
+.tiles {
+  display: flex;
+  height: 85vh;
+  min-height: 420px;
+}
+
+.tile {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);   /* shows while the photo loads */
+  color: #fff;
+  text-decoration: none;
+}
+.tile + .tile { border-left: 2px solid #fff; }
+
+.tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* crop photo to fill the tile */
+  transition: transform 0.6s ease;
+}
+.tile:hover img { transform: scale(1.05); }
+
+/* dark fade at the bottom so the label is readable on any photo */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 55%, rgba(0, 0, 0, 0.6));
+}
+
+.tile span {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+}
+
+
+/* ---------- Home page: intro band (red block from the mockup) ---------- */
+
+.intro {
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+}
+.intro p { max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+
+/* ---------- Contact: details + form ---------- */
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+}
+
+.contact-details p { margin: 0 0 1em; }
+
+.contact-form label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  font: inherit;
+}
+.contact-form textarea { min-height: 140px; resize: vertical; }
+
+.form-note   { font-size: 0.85rem; color: var(--muted); }
+.form-status { font-weight: 600; min-height: 1.6em; }
+
+
+/* ---------- Google Maps (loads only after a click) ---------- */
+
+.map {
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: #e3e6ec;
+  color: var(--muted);
+  text-align: center;
+}
+.map iframe { width: 100%; height: 100%; border: 0; }
+.map p { margin: 0; max-width: 520px; font-size: 0.9rem; }
+
+
+/* ---------- Listing pages ---------- */
+
+.back { display: inline-block; margin-bottom: 24px; text-decoration: none; }
+
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 700px; }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+  padding: 0;
+}
+.facts div { border-left: 3px solid var(--accent); padding-left: 12px; }
+.facts dt  { font-size: 0.85rem; color: var(--muted); }
+.facts dd  { margin: 0; font-size: 1.1rem; }
+
+.booking { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.booking p { margin: 0; color: var(--muted); }
+
+/* Gallery: as many columns as fit, each at least 220px wide */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+.gallery a:hover img { opacity: 0.85; }
+
+/* Lightbox (the <dialog> opened by js/site.js) */
+.lightbox {
+  max-width: 95vw;
+  max-height: 95vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.lightbox::backdrop { background: rgba(0, 0, 0, 0.88); }
+.lightbox img { max-width: 95vw; max-height: 88vh; }
+
+.lightbox button {
+  position: fixed;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+.lightbox-close { top: 8px;  right: 8px; }
+.lightbox-prev  { top: 50%;  left: 8px;  transform: translateY(-50%); }
+.lightbox-next  { top: 50%;  right: 8px; transform: translateY(-50%); }
+
+
+/* ---------- Legal page ---------- */
+
+.legal { max-width: 760px; }
+.legal dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 24px; }
+.legal dt { color: var(--muted); }
+.legal dd { margin: 0; }
+
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 32px 0;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.9rem;
+}
+.site-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 32px; }
+.site-footer p { margin: 0; }
+.site-footer a { color: #fff; }
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+  /* tiles stack as horizontal strips, as in the mockup */
+  .tiles { flex-direction: column; height: auto; min-height: 0; }
+  .tile  { flex: none; height: 24vh; min-height: 150px; }
+  .tile + .tile { border-left: 0; border-top: 2px solid #fff; }
+  .tile span { left: 20px; bottom: 16px; }
+
+  .site-header { padding: 12px 16px; }
+  .site-header-overlay .logo img { height: 64px; }
+  .logo img { height: 48px; }
+
+  .section { padding: 48px 0; }
+  .contact { grid-template-columns: 1fr; gap: 24px; }
+  .legal dl { grid-template-columns: 1fr; gap: 0; }
+  .legal dd { margin-bottom: 10px; }
+}

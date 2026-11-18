@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RPO Aktiva Vit – najem hiše, apartmaja, avtomobila in motorja</title>
+  <meta name="description" content="Najem hiše, apartmaja, avtomobila in motorja.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header site-header-overlay">
+    <a class="logo" href="index.html"><img src="images/logo.svg" alt="RPO Aktiva Vit"></a>
+
+    <!-- Language switcher: switch on once the EN and IT versions exist.
+    <nav class="lang" aria-label="Jezik">
+      <a href="index.html" lang="sl" aria-current="page">SL</a>
+      <a href="en/index.html" lang="en">EN</a>
+      <a href="it/index.html" lang="it">IT</a>
+    </nav>
+    -->
+  </header>
+
+
+  <!-- PHOTO TILES
+       Each <a class="tile"> is one item for rent.
+       To remove an item, delete its <a> block; the remaining tiles widen to fill the row.
+       To add one, copy a block and change the link, photo and name. -->
+  <nav class="tiles" aria-label="Ponudba">
+    <a class="tile" href="house.html">
+      <img src="images/house/cover.webp" alt="">
+      <span>Hiša</span>
+    </a>
+    <a class="tile" href="apartment.html">
+      <img src="images/apartment/cover.webp" alt="">
+      <span>Apartma</span>
+    </a>
+    <a class="tile" href="car.html">
+      <img src="images/car/cover.webp" alt="">
+      <span>Avto</span>
+    </a>
+    <a class="tile" href="motorcycle.html">
+      <img src="images/motorcycle/cover.webp" alt="">
+      <span>Motor</span>
+    </a>
+  </nav>
+
+
+  <!-- INTRO (the red band from the mockup) -->
+  <section class="section intro">
+    <div class="container">
+      <h1>Vse za vaš oddih na enem mestu</h1>
+      <p>
+        Oddajamo hišo, apartma, avtomobil in motor. Izberite, kar vas zanima,
+        in si oglejte podrobnosti in fotografije. Za vprašanja in rezervacije
+        nam pišite prek obrazca spodaj.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="section" id="kontakt">
+    <div class="container contact">
+
+      <div class="contact-details">
+        <h2>Kontakt</h2>
+        <p>
+          RPO Aktiva Vit d.o.o.<br>
+          [Ulica in hišna številka]<br>
+          [Poštna številka in kraj]
+        </p>
+        <p>
+          Tel.: <a href="tel:+38600000000">+386 00 000 000</a><br>
+          E-pošta: <a href="mailto:info@example.com">info@example.com</a>
+        </p>
+      </div>
+
+      <!-- Contact form. Messages are emailed to you by Web3Forms (web3forms.com).
+           Replace YOUR_ACCESS_KEY with the key they send you. The key is meant to be public. -->
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST"
+            data-success="Hvala! Vaše sporočilo je bilo poslano."
+            data-error="Pošiljanje ni uspelo. Poskusite znova ali nam pišite na e-pošto.">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+        <input type="hidden" name="subject" value="Povpraševanje s spletne strani">
+        <input type="checkbox" name="botcheck" hidden> <!-- spam trap: real visitors never see it -->
+
+        <label>Ime in priimek
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>E-pošta
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>Telefon (neobvezno)
+          <input type="tel" name="phone" autocomplete="tel">
+        </label>
+        <label>Sporočilo
+          <textarea name="message" required></textarea>
+        </label>
+
+        <p class="form-note">
+          Vaše podatke uporabimo samo za odgovor na povpraševanje.
+          Več v <a href="legal.html#zasebnost">politiki zasebnosti</a>.
+        </p>
+        <button type="submit" class="btn">Pošlji</button>
+        <p class="form-status" role="status"></p>
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- MAP
+       Google Maps loads only after the visitor clicks the button (no cookies before that).
+       To change the location: Google Maps > Share > Embed a map > copy the src="..." URL
+       into data-src below, and update the "Odpri v Google Maps" link. -->
+  <section class="map" data-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1975.7339221667855!2d13.734991048488983!3d45.54811854809777!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3726902e465bebaf!2sRpo+aktiva+Vit%2C+ra%C4%8Dunovodenje%2C+kadrovsko+in+poslovno+Svetovanje.+d.o.o.!5e0!3m2!1sen!2ssi!4v1439062975272">
+    <h2>Kje smo</h2>
+    <p>Zemljevid prikazuje storitev Google Maps. Ko ga odprete, Google prejme vaš naslov IP in lahko nastavi piškotke.</p>
+    <button type="button" class="btn">Prikaži zemljevid</button>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=45.54812,13.73499" target="_blank" rel="noopener">Odpri v Google Maps</a>
+  </section>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 RPO Aktiva Vit d.o.o.</p>
+      <p><a href="legal.html">Pravno obvestilo in zasebnost</a></p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

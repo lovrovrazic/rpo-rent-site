@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Najem avtomobila – RPO Aktiva Vit</title>
+  <meta name="description" content="Najem avtomobila. Fotografije, opis in povpraševanje.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html"><img src="images/logo.svg" alt="RPO Aktiva Vit"></a>
+
+    <!-- Language switcher: switch on once the EN and IT versions exist.
+    <nav class="lang" aria-label="Jezik">
+      <a href="car.html" lang="sl" aria-current="page">SL</a>
+      <a href="en/car.html" lang="en">EN</a>
+      <a href="it/car.html" lang="it">IT</a>
+    </nav>
+    -->
+  </header>
+
+
+  <main>
+
+    <!-- TITLE, KEY FACTS, BOOKING -->
+    <section class="section">
+      <div class="container">
+        <a class="back" href="index.html">← Vsa ponudba</a>
+        <h1>Avto</h1>
+        <p class="lead">Kratek opis avtomobila v enem ali dveh stavkih.</p>
+
+        <!-- Key facts: add or delete <div> lines as needed -->
+        <dl class="facts">
+        <div><dt>Model</dt><dd>X</dd></div>
+        <div><dt>Sedeži</dt><dd>X</dd></div>
+        <div><dt>Menjalnik</dt><dd>X</dd></div>
+        <div><dt>Gorivo</dt><dd>X</dd></div>
+        <div><dt>Cena</dt><dd>od X € / dan</dd></div>
+        </dl>
+      </div>
+    </section>
+
+
+    <!-- GALLERY
+         Photos live in images/car/. One file per photo is enough;
+         it is shown small here and large when clicked.
+         To add a photo, copy one <a> line and change both file names. -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Fotografije</h2>
+        <div class="gallery">
+        <a href="images/car/01.webp"><img src="images/car/01.webp" alt="Avto – fotografija 1" loading="lazy"></a>
+        <a href="images/car/02.webp"><img src="images/car/02.webp" alt="Avto – fotografija 2" loading="lazy"></a>
+        <a href="images/car/03.webp"><img src="images/car/03.webp" alt="Avto – fotografija 3" loading="lazy"></a>
+        <a href="images/car/04.webp"><img src="images/car/04.webp" alt="Avto – fotografija 4" loading="lazy"></a>
+        <a href="images/car/05.webp"><img src="images/car/05.webp" alt="Avto – fotografija 5" loading="lazy"></a>
+        <a href="images/car/06.webp"><img src="images/car/06.webp" alt="Avto – fotografija 6" loading="lazy"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Large photo view, opened by js/site.js -->
+    <dialog class="lightbox">
+      <img src="" alt="">
+      <button type="button" class="lightbox-prev" aria-label="Prejšnja">‹</button>
+      <button type="button" class="lightbox-next" aria-label="Naslednja">›</button>
+      <button type="button" class="lightbox-close" aria-label="Zapri">×</button>
+    </dialog>
+
+
+    <!-- DESCRIPTION -->
+    <section class="section">
+      <div class="container">
+        <h2>Opis</h2>
+        <p>
+          Tukaj opišite avto: opremo, okolico, pogoje najema in posebnosti.
+          To besedilo je samo primer in ga zamenjajte.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- INQUIRY FORM: the same form as on the home page, plus a hidden
+         "listing" field so the email tells you which item the visitor means. -->
+    <section class="section section-alt" id="povprasevanje">
+      <div class="container contact">
+
+        <div class="contact-details">
+          <h2>Povpraševanje</h2>
+          <p>Zanima vas avto? Pišite nam in odgovorili vam bomo v najkrajšem možnem času.</p>
+          <p>
+            Tel.: <a href="tel:+38600000000">+386 00 000 000</a><br>
+            E-pošta: <a href="mailto:info@example.com">info@example.com</a>
+          </p>
+        </div>
+
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST"
+              data-success="Hvala! Vaše sporočilo je bilo poslano."
+              data-error="Pošiljanje ni uspelo. Poskusite znova ali nam pišite na e-pošto.">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+          <input type="hidden" name="subject" value="Povpraševanje: Avto">
+          <input type="hidden" name="listing" value="Avto">
+          <input type="checkbox" name="botcheck" hidden> <!-- spam trap: real visitors never see it -->
+
+          <label>Ime in priimek
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label>E-pošta
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+          <label>Telefon (neobvezno)
+            <input type="tel" name="phone" autocomplete="tel">
+          </label>
+          <label>Sporočilo
+            <textarea name="message" required></textarea>
+          </label>
+
+          <p class="form-note">
+            Vaše podatke uporabimo samo za odgovor na povpraševanje.
+            Več v <a href="legal.html#zasebnost">politiki zasebnosti</a>.
+          </p>
+          <button type="submit" class="btn">Pošlji</button>
+          <p class="form-status" role="status"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 RPO Aktiva Vit d.o.o.</p>
+      <p><a href="legal.html">Pravno obvestilo in zasebnost</a></p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
